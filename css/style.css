@@ -1,3 +1,47 @@
+/*
+================================================
+GROOVE ECHOES - DRUMMER FANSITE
+Main Stylesheet (style.css)
+================================================
+
+This stylesheet uses a mobile-first approach, starting with
+base styles for mobile devices and progressively enhancing
+for larger screens using media queries.
+
+Key Responsive Breakpoints:
+- Mobile: < 426px (base styles)
+- Tablet: 426px - 1024px (first breakpoint)
+- Desktop: > 1024px (second breakpoint)
+
+Learning Focus:
+- CSS Custom Properties (CSS Variables)
+- CSS Reset and Universal Styles
+- Box Model (margin, padding, border-box)
+- Flexbox for Navigation and Layout
+- Position (sticky, relative, fixed, absolute)
+- Transitions and Hover Effects
+- Media Queries for Responsive Design
+- Grid Layout for Desktop Views
+
+IMPORTANT:
+- The tertiary color (burgundy red) is used for hover effects
+- The hamburger menu uses the "checkbox hack" technique
+- Sticky header stays visible during scrolling
+- Grid layouts are used for footer and artist containers
+================================================
+*/
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (CSS Variables)
+   ============================================
+   CSS variables allow us to define reusable values.
+   They make it easy to maintain consistent colors and
+   sizes throughout the stylesheet.
+   
+   Syntax: --variable-name: value;
+   Usage: property: var(--variable-name);
+============================================ */
+
 :root {
     --primary-color:rgb(59, 59, 59);
     --secondary-color: rgb(255, 255, 255);
@@ -10,13 +54,41 @@
 
 
 
-/*MOBILE FIRST*/
+
+
+/* ============================================
+   MOBILE-FIRST BASE STYLES
+   ============================================
+   Mobile-first means we write CSS for mobile devices
+   first, then add styles for larger screens using
+   media queries.
+   
+   Benefits:
+   - Faster loading on mobile devices
+   - Simpler CSS (less overriding)
+   - Better performance
+   - Progressive enhancement
+============================================ */
 
 /*Réinisialiter les styles par defaut des navigateurs*/
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* ============================================
+   CSS RESET - Universal Selector
+   ============================================
+   The universal selector (*) targets ALL elements.
+   This "CSS reset" removes default browser spacing
+   and ensures consistent box-sizing across browsers.
+   
+   box-sizing: border-box means width/height include
+   padding and border (easier to calculate layouts).
+   
+   Why we need this:
+   - Browsers add default margins and padding
+   - Different browsers have different defaults
+   - border-box makes sizing more predictable
+============================================ */
 }
 
 /* Définision du style des éléments background-color et font-family*/
