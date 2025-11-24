@@ -1,552 +1,675 @@
 <!DOCTYPE html>
-<html lang="fr">
-    <head>
-    <!-- SEO -->	
-    <!--Description-->
-    <meta name="description" content="Plongez dans l’univers du groove avec Échos du Groove, 
-    le fansite dédié à Art Blakey, Jonathan Moffet et Anika Nilles. 
-    Biographies, analyses, actualités, vidéos et toute l’inspiration 
-    de trois batteurs emblématiques du jazz, de la pop et de la batterie moderne.">	
+<!-- 
+    ============================================
+    GROOVE ECHOES - DRUMMER FANSITE
+    Home Page (index.html)
     
-    <!--Les mots clés-->
-    <meta name="keywords" content="Art Blakey, Jonathan Moffet, Anika Nilles, 
-    batterie, batteurs, jazz, funk, pop, groove, Échos du Groove, biographie, 
-    concerts, événements, analyse, performances, vidéos, photos, drumming, 
-    musique moderne, virtuose, créativité, influence, génération de batteurs, maître du rythme">
-    
-    <!--Auteur-->
-    <meta name="author" content="Andrés Montes Zuluaga">	
+    This page showcases three legendary drummers:
+    - Art Blakey (Jazz)
+    - Jonathan Moffett (Pop/Funk)
+    - Anika Nilles (Modern)
+    ============================================
+-->
 
-    <!--Type des jeus de caractères-->
+<html lang="en">
+<!-- 
+    The lang attribute specifies the primary language
+    of the document. "en" indicates English.
+    Important for:
+    - Screen readers
+    - Search engines
+    - Browser translation tools
+-->
+
+<head>
+    <!-- ============================================
+         HEAD SECTION
+         
+         Contains metadata and resources that don't
+         display directly on the page but are essential
+         for proper functioning and SEO
+         ============================================ -->
+    
+    <!-- ============================================
+         SEO (Search Engine Optimization) META TAGS
+         ============================================ -->
+    
+    <!-- Page Description -->
+    <!-- 
+        Appears in search results below the title.
+        Optimal length: 150-160 characters.
+        Should be compelling and include keywords.
+    -->
+    <meta name="description" content="Dive into the world of groove with Groove Echoes, 
+          the fansite dedicated to Art Blakey, Jonathan Moffett, and Anika Nilles. 
+          Biographies, analyses, news, videos, and inspiration from three iconic 
+          drummers of jazz, pop, and modern drumming.">
+    
+    <!-- Keywords -->
+    <!-- 
+        Helps search engines categorize content.
+        List relevant terms users might search for.
+    -->
+    <meta name="keywords" content="Art Blakey, Jonathan Moffett, Anika Nilles, 
+          drums, drummers, jazz, funk, pop, groove, Groove Echoes, biography, 
+          concerts, events, analysis, performances, videos, photos, drumming, 
+          modern music, virtuoso, creativity, influence, drummer generation, rhythm master">
+    
+    <!-- Author -->
+    <meta name="author" content="Andrés Montes Zuluaga">
+    
+    <!-- ============================================
+         ESSENTIAL META TAGS
+         ============================================ -->
+    
+    <!-- Character Encoding -->
+    <!-- 
+        UTF-8 supports all languages and special characters.
+        Must be placed early in <head>.
+    -->
     <meta charset="UTF-8">
-    <!--Definition de viewport-->
+    
+    <!-- Viewport Configuration -->
+    <!-- 
+        CRITICAL for responsive design.
+        - width=device-width: Matches screen width
+        - initial-scale=1.0: No zoom by default
+        Without this, mobile devices show desktop version.
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Titre de la page-->
-    <title>Échos du Groove</title>
-    <!---->
+    
+    <!-- Page Title -->
+    <!-- 
+        Appears in:
+        - Browser tab
+        - Search results
+        - Bookmarks
+        Keep under 60 characters for optimal display.
+    -->
+    <title>Groove Echoes - Home</title>
+    
+    <!-- ============================================
+         EXTERNAL RESOURCES
+         ============================================ -->
+    
+    <!-- Main Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <!--Création d'élément main pour représenter le contenú majoritaire du body-->
+    
+    <!-- Google Fonts - Roboto -->
+    <!-- 
+        Preconnect speeds up font loading by establishing
+        early connections to Google's servers.
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" 
+          rel="stylesheet">
 
+</head>
 
-
-    </head>
-
-    <body>
-
-        <header class="header">
-            <!--Création de contenur pour le menu-->
-            <nav class="navbar">
+<body>
+    <!-- ============================================
+         BODY SECTION
+         Contains all visible page content
+         ============================================ -->
     
-                <!--Logo-->
-                <a href="index.html"  class="logo-size">
-                    <img class="logo" src="images/logo.png">
-                </a>
+    <!-- ============================================
+         HEADER - Top section with navigation
+         
+         Semantic <header> tag identifies the top banner
+         area, typically containing logo and main nav.
+         ============================================ -->
+    <header class="header">
+        
+        <!-- ============================================
+             NAVIGATION BAR
+             
+             Uses Flexbox layout and checkbox hack for
+             mobile hamburger menu (CSS-only solution).
+             ============================================ -->
+        <nav class="navbar">
+            
+            <!-- Logo / Home Link -->
+            <!-- 
+                Best practice: Logo should always link to home.
+                aria-label provides accessible description.
+            -->
+            <a href="index.html" class="logo-size" aria-label="Go to homepage">
+                <img class="logo" 
+                     src="images/logo.png" 
+                     alt="Groove Echoes Logo - Drummer Fansite">
+                <!-- 
+                    ALT text is CRITICAL for:
+                    - Screen readers (accessibility)
+                    - SEO (search engines)
+                    - When images fail to load
+                -->
+            </a>
+            
+            <!-- Hamburger Menu Label -->
+            <!-- 
+                Acts as the visible menu button on mobile.
+                The 'for' attribute connects to checkbox below.
+                When clicked, it toggles the checkbox state.
+            -->
+            <label class="label_burger" 
+                   for="menu_burger" 
+                   aria-label="Toggle navigation menu">
+                <!-- SVG Icon for hamburger menu -->
+                <!-- 
+                    SVG (Scalable Vector Graphics) scales perfectly
+                    on any screen size without pixelation.
+                -->
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="35"
+                     height="35"
+                     fill="#ffffff"
+                     class="list_icon"
+                     viewBox="0 0 16 16"
+                     aria-hidden="true">
+                    <!-- Three horizontal lines for menu icon -->
+                    <path fill-rule="evenodd"
+                          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+            </label>
+            
+            <!-- Hidden Checkbox -->
+            <!-- 
+                This checkbox controls menu visibility.
+                Hidden but its :checked state is used in CSS
+                to show/hide the navigation menu.
+                This technique is called the 'checkbox hack'.
+            -->
+            <input class="menu_burger" 
+                   type="checkbox" 
+                   name="menu_toggle" 
+                   id="menu_burger"
+                   aria-label="Menu toggle">
+            
+            <!-- Navigation Links List -->
+            <!-- 
+                Unordered list (<ul>) is semantic HTML for
+                navigation items. Each link is a list item (<li>).
+            -->
+            <ul class="ul_links">
+                <!-- Link to Art Blakey page -->
+                <li class="li_links">
+                    <a href="fansite1.html" class="link">Art Blakey</a>
+                </li>
                 
-    
+                <!-- Link to Jonathan Moffett page -->
+                <li class="li_links">
+                    <a href="fansite2.html" class="link">Jonathan Moffett</a>
+                </li>
                 
+                <!-- Link to Anika Nilles page -->
+                <li class="li_links">
+                    <a href="fansite3.html" class="link">Anika Nilles</a>
+                </li>
+                
+                <!-- Link to Contact page -->
+                <li class="li_links">
+                    <a href="contact.html" class="link">Contact</a>
+                </li>
+            </ul>
+            
+        </nav>
+        <!-- End of navbar -->
+        
+    </header>
+    <!-- End of header -->
     
-                <label class="label_burger" for="menu_burger">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="35"
-                        height="35"
-                        fill="#ffffff"
-                        class="list_icon"
-                        viewBox="0 0 16 16"
-                    >
-                        <path
-                            fill-rule="evenodd"
-                            d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
-                        />
-                    </svg>
-                </label>
+    <!-- ============================================
+         SCROLL TO TOP BUTTON
+         
+         Floating button that appears on longer pages.
+         Allows users to quickly return to top.
+         ============================================ -->
+    <a href="#top" class="link-top-button" aria-label="Back to top">
+        <img class="img-top-button" 
+             src="images/top-button.png" 
+             alt="Scroll to top button">
+    </a>
+    <!-- Invisible anchor point at top of page -->
+    <span id="top"></span>
     
-                <!--Élément checkbox pour l'interaction de menu hamburguer-->
-                <input class="menu_burger" type="checkbox" name="" id="menu_burger">
-    
-                <!--Création d'options pour la navigation-->
-                <ul class="ul_links">
+    <!-- ============================================
+         MAIN CONTENT SECTION
+         
+         The <main> element contains the primary
+         content of the page. There should only be
+         ONE <main> element per page.
+         ============================================ -->
+    <main>
+        
+        <!-- ============================================
+             HOMEPAGE CONTAINER (Mobile & Tablet)
+             
+             This section displays the introduction
+             and overview of all three drummers.
+             Visible on screens smaller than 1025px.
+             ============================================ -->
+        <section class="container_index">
+            
+            <!-- Main Page Title (H1) -->
+            <!-- 
+                H1 is the most important heading.
+                - Only ONE H1 per page for SEO
+                - Should describe page content
+                - Usually the first heading users see
+            -->
+            <h1 class="title1_index">
+                Through the Beats
+            </h1>
+            
+            <!-- Introduction Article -->
+            <!-- 
+                <article> represents independent, 
+                self-contained content that could be
+                distributed separately and still make sense.
+            -->
+            <article class="description_container">
+                
+                <!-- Secondary Heading (H2) -->
+                <!-- 
+                    H2 is a subsection of H1.
+                    Heading hierarchy should be:
+                    H1 > H2 > H3 > H4 etc.
+                    Never skip levels!
+                -->
+                <h2 class="title2_index">
+                    United by Rhythm
+                </h2>
+                
+                <!-- Descriptive Paragraph -->
+                <p class="text_description">
+                    Welcome to our fansite dedicated to three exceptional drummers: 
+                    Art Blakey, Jonathan Moffett, and Anika Nilles. Explore the site 
+                    to discover their journey, their art, analyses of their performances, 
+                    news and upcoming events. Join us in celebrating the rhythmic richness 
+                    and global impact of these drumming masters!
+                </p>
+                
+            </article>
+            <!-- End of introduction -->
+            
+            <!-- ============================================
+                 ART BLAKEY SECTION
+                 
+                 Each drummer gets a dedicated article
+                 with video and description.
+                 ============================================ -->
+            <article class="artist_container">
+                
+                <!-- Left Column - Visible on Desktop -->
+                <article class="left_column_artist">
+                    
+                    <!-- Drummer Name (H3) -->
+                    <h3 class="title3_index">
+                        Art Blakey
+                    </h3>
+                    
+                    <!-- Embedded YouTube Video -->
+                    <!-- 
+                        <iframe> embeds external content.
+                        - src: YouTube embed URL
+                        - title: Describes video (accessibility)
+                        - frameborder="0": No border
+                        - allow: Permissions for features
+                        - allowfullscreen: Enables fullscreen
+                    -->
+                    <iframe class="videos_index" 
+                            src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" 
+                            title="Art Blakey - Drum Solo - France 1959" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                    </iframe>
+                    
+                    <!-- Artist Description -->
+                    <p class="text_artist">
+                        Pioneer of modern jazz, he revolutionized the art of drumming with 
+                        his energy and improvisations. Mentor to generations of musicians 
+                        and defender of authentic musical expression.
+                    </p>
+                    
+                </article>
+                <!-- End of left column -->
+                
+                <!-- Right Column - Visible on Mobile/Tablet -->
+                <!-- 
+                    Responsive design: Different layouts for
+                    different screen sizes using CSS media queries.
+                -->
+                <article class="right_column_artist">
+                    <!-- Same video, different responsive class -->
+                    <iframe class="videos_index_brk1" 
+                            src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" 
+                            title="Art Blakey - Drum Solo - France 1959" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                    </iframe>
+                </article>
+                
+            </article>
+            <!-- End of Art Blakey section -->
+            
+            <!-- JONATHAN MOFFETT SECTION -->
+            <article class="artist_container">
+                <article class="left_column_artist">
+                    <h3 class="title3_index">Jonathan Moffett</h3>
+                    <iframe class="videos_index" 
+                            src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" 
+                            title="Jonathan Moffett - Billy Jean" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                    </iframe>
+                    <p class="text_artist">
+                        Iconic figure in pop and funk, he has accompanied the greatest artists
+                        like Michael Jackson. His percussive and spectacular style has marked
+                        the history of drumming on stage and in the studio.
+                    </p>
+                </article>
+                <article class="right_column_artist">
+                    <iframe class="videos_index_brk1" 
+                            src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" 
+                            title="Jonathan Moffett - Billy Jean" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                    </iframe>
+                </article>
+            </article>
+            
+            <!-- ANIKA NILLES SECTION -->
+            <article class="artist_container">
+                <article class="left_column_artist">
+                    <h3 class="title3_index">Anika Nilles</h3>
+                    <iframe class="videos_index" 
+                            src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" 
+                            title="Anika Nilles - Drum Solo - 2015" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                    </iframe>
+                    <p class="text_artist">
+                        Innovator of modern drumming, she fuses complex grooves and powerful melodies.
+                        Recognized for her virtuosity and creativity, she inspires a new generation
+                        of drummers around the world.
+                    </p>
+                </article>
+                <article class="right_column_artist">
+                    <iframe class="videos_index_brk1" 
+                            src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" 
+                            title="Anika Nilles - Drum Solo - 2015" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            referrerpolicy="strict-origin-when-cross-origin" 
+                            allowfullscreen>
+                    </iframe>
+                </article>
+            </article>
+            
+        </section>
+        <!-- End of container_index -->
+        
+        <!-- ============================================
+             DESKTOP CONTAINER (Large Screens)
+             Visible on screens 1025px and larger
+             Three-column grid layout
+             ============================================ -->
+        <section class="container_index_brk2">
+            <h1 class="title1_index">Through the Beats</h1>
+            
+            <article class="description_container">
+                <h2 class="title2_index">United by Rhythm</h2>
+                <p class="text_description">
+                    Welcome to our fansite dedicated to three exceptional drummers: 
+                    Art Blakey, Jonathan Moffett, and Anika Nilles. Explore the site 
+                    to discover their journey, their art, analyses of their performances, 
+                    news and upcoming events. Join us in celebrating the rhythmic richness 
+                    and global impact of these drumming masters!
+                </p>
+            </article>
+            
+            <!-- Three column grid for desktop -->
+            <article class="artist_container_3fr">
+                
+                <!-- Art Blakey -->
+                <article class="artist_container">
+                    <article class="left_column_artist">
+                        <h3 class="title3_index">Art Blakey</h3>
+                        <iframe class="videos_index" 
+                                src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" 
+                                title="Art Blakey - Drum Solo - France 1959" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                        </iframe>
+                        <p class="text_artist">
+                            Pioneer of modern jazz, he revolutionized the art of drumming with 
+                            his energy and improvisations. Mentor to generations of musicians 
+                            and defender of authentic musical expression.
+                        </p>
+                    </article>
+                </article>
+                
+                <!-- Jonathan Moffett -->
+                <article class="artist_container">
+                    <article class="left_column_artist">
+                        <h3 class="title3_index">Jonathan Moffett</h3>
+                        <iframe class="videos_index" 
+                                src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" 
+                                title="Jonathan Moffett - Billy Jean" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                        </iframe>
+                        <p class="text_artist">
+                            Iconic figure in pop and funk, he has accompanied the greatest artists
+                            like Michael Jackson. His percussive and spectacular style has marked
+                            the history of drumming.
+                        </p>
+                    </article>
+                </article>
+                
+                <!-- Anika Nilles -->
+                <article class="artist_container">
+                    <article class="left_column_artist">
+                        <h3 class="title3_index">Anika Nilles</h3>
+                        <iframe class="videos_index" 
+                                src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" 
+                                title="Anika Nilles - Drum Solo - 2015" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                        </iframe>
+                        <p class="text_artist">
+                            Innovator of modern drumming, she fuses complex grooves and powerful melodies.
+                            Recognized for her virtuosity and creativity, she inspires a new generation
+                            of drummers around the world.
+                        </p>
+                    </article>
+                </article>
+                
+            </article>
+        </section>
+        <!-- End of container_index_brk2 -->
+        
+    </main>
+    <!-- End of main content -->
 
-                    <li class="li_links">
-                        <a href="fansite1.html" class="link">Art Blakey</a>
+    <!-- ============================================
+         FOOTER SECTION
+         
+         Contains navigation links to all pages and
+         drummer profiles. Organized by drummer with
+         portrait images.
+         ============================================ -->
+    <footer class="footer">
+        
+        <!-- Mobile/Tablet Footer Navigation -->
+        <nav class="nav_footer">
+            
+            <!-- Art Blakey Section -->
+            <section class="section_footer">
+                <img class="portraits_footer" 
+                     src="images/Blakey/footer.jpg" 
+                     alt="Art Blakey portrait">
+                <ul class="ul_links_footer">
+                    <li class="li_links_footer">
+                        <a href="fansite1.html" class="link_footer">Art Blakey</a>
                     </li>
-    
-                    <li class="li_links">
-                        <a href="fansite2.html" class="link">Jonathan Moffet</a>
+                    <li class="li_links_footer">
+                        <a href="fansite1.html#biographie" class="link_child_footer">Biography</a>
                     </li>
-    
-                    <li class="li_links">
-                        <a href="fansite3.html" class="link">Anika Nilles</a>
+                    <li class="li_links_footer">
+                        <a href="fansite1.html#news" class="link_child_footer">News</a>
                     </li>
-
-                    <li class="li_links">
-                        <a href="contact.html" class="link">Contact</a>
+                    <li class="li_links_footer">
+                        <a href="fansite1.html#concerts" class="link_child_footer">Concerts</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite1.html#evenements" class="link_child_footer">Events</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite1.html#photo-video" class="link_child_footer">Photos and Videos</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite1.html#liens" class="link_child_footer">Links</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="contact.html" class="link_child_footer">Contact</a>
                     </li>
                 </ul>
-    
-    
-            </nav>
-        </header>
-
-        <!--Adding a top button flotant-->        
-        <a href="#top" class="link-top-button">
-            <img class="img-top-button" src="images/top-button.png" alt="Aller au commencement du site">
-        </a>
-
-        <span id="top"></span>
-
-        <main>
-
-            <section class="container_index">
-
-                <h1 class="title1_index">
-                    À Travers les Battements
-                </h1>
-
-                <article class="description_container">
-
-                    <h2 class="title2_index">
-                        Unis par le rythme
-                    </h2>
-
-                    <p class="text_description">
-                        Bienvenue sur notre fansite dédié à trois batteurs d'exception : Art Blakey, 
-                        Jonathan Moffet et Anika Nilles. Explorez le site pour découvrir 
-                        leur parcours, leur art, des analyses de leurs performances, des actualités 
-                        et des événements à venir. Rejoignez-nous pour célébrer la richesse rythmique 
-                        et l'impact mondial de ces maîtres de la batterie !
-                    </p>
-
-                </article>
-
-                <article class="artist_container">
-                  
-                    <article class="left_column_artist">
-
-                        <h3 class="title3_index">
-                            Art Blakey
-                        </h3>
-                        <iframe class="videos_index" src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" title="Drum Solo - France 1959" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-                        </iframe>
-                        <p class="text_artist">
-                            Pionnier du jazz moderne, il a révolutionné l’art de la batterie avec son 
-                            énergie et ses improvisations. Mentor de générations de musiciens et défenseur 
-                            de l’expression musicale authentique.
-                        </p>
-                    </article>
-
-                    <article class="right_column_artist">
-
-                        <iframe class="videos_index_brk1" src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" title="Drum Solo - France 1959" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-                        </iframe>
-
-                    </article>
-
-                </article>
-
-                <article class="artist_container">
-
-                    <article class="left_column_artist">
-
-                        <h3 class="title3_index">
-                            Jonathan Moffet
-                        </h3>
-                        <iframe class="videos_index" width="560" height="315" src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" title="Billy Jean" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                        </iframe>
-                        <p class="text_artist">
-                            Figure incontournable de la pop et du funk, il a accompagné les plus 
-                            grands artistes comme Michael Jackson. Son style percussif et spectaculaire 
-                            a marqué l’histoire de la batterie sur scène et en studio.
-                        </p>
-                    </article>
-
-                    <article class="right_column_artist">
-
-                        <iframe class="videos_index_brk1" src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" title="Billy Jean" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                        </iframe>
-
-                    </article>
-
-                </article>
-
-                <article class="artist_container">
-
-                    <article class="left_column_artist">
-
-                        <h3 class="title3_index">
-                            Anika Nilles
-                        </h3>
-                        <iframe class="videos_index" src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" title="Drum solo - 2015" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                        </iframe>
-                        <p class="text_artist">
-                            Innovatrice de la batterie moderne, elle fusionne grooves complexes et mélodies percutantes. 
-                            Reconnue pour sa virtuosité et sa créativité, elle inspire une nouvelle 
-                            génération de batteurs à travers le monde.
-                        </p>
-                    </article>
-
-                    <article class="right_column_artist">
-
-                        <iframe class="videos_index_brk1" src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" title="Drum solo - 2015" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                        </iframe>
-
-                    </article>
-
-                </article>
-
-
             </section>
-
-<!--Adding breakpoint 2 container, big screens-->
-            <section class="container_index_brk2">
-
-                <h1 class="title1_index">
-                    À Travers les Battements
-                </h1>
-
-                <article class="description_container">
-
-                    <h2 class="title2_index">
-                        Unis par le rythme
-                    </h2>
-
-                    <p class="text_description">
-                        Bienvenue sur notre fansite dédié à trois batteurs d'exception : Art Blakey, 
-                        Jonathan Moffet et Anika Nilles. Explorez le site pour découvrir 
-                        leur parcours, leur art, des analyses de leurs performances, des actualités 
-                        et des événements à venir. Rejoignez-nous pour célébrer la richesse rythmique 
-                        et l'impact mondial de ces maîtres de la batterie !
-                    </p>
-
-                </article>
-
-                <article class="artist_container_3fr">
-
-                    <article class="artist_container">
-                    
-                        <article class="left_column_artist">
-
-                            <h3 class="title3_index">
-                                Art Blakey
-                            </h3>
-                            <iframe class="videos_index" src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" title="Drum Solo - France 1959" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-                            </iframe>
-                            <p class="text_artist">
-                                Pionnier du jazz moderne, il a révolutionné l’art de la batterie avec son 
-                            énergie et ses improvisations. Mentor de générations de musiciens et défenseur 
-                            de l’expression musicale authentique.
-                            </p>
-                        </article>
-
-                        <article class="right_column_artist">
-
-                            <iframe class="videos_index_brk1" src="https://www.youtube.com/embed/264WCccnd64?si=cxtCVKiqqSmvNcBt" title="Drum Solo - France 1959" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-
-                            </iframe>
-
-                        </article>
-
-                    </article>
-
-                    <article class="artist_container">
-
-                        <article class="left_column_artist">
-
-                            <h3 class="title3_index">
-                                Jonathan Moffet
-                            </h3>
-                            <iframe class="videos_index" src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" title="Billy Jean" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                            </iframe>
-                            <p class="text_artist">
-                                Figure incontournable de la pop et du funk, il a accompagné les plus 
-                                grands artistes comme Michael Jackson. Son style percussif et spectaculaire 
-                                a marqué l’histoire de la batterie.
-                            </p>
-                        </article>
-
-                        <article class="right_column_artist">
-
-                            <iframe class="videos_index_brk1" src="https://www.youtube.com/embed/CuxUgE395KQ?si=LL3wZQoLyINiQ6Fq" title="Billy Jean" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                            </iframe>
-
-                        </article>
-
-                    </article>
-
-                    <article class="artist_container">
-
-                        <article class="left_column_artist">
-
-                            <h3 class="title3_index">
-                                Anika Nilles
-                            </h3>
-                            <iframe class="videos_index" src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" title="Drum solo - 2015" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                            </iframe>
-                            <p class="text_artist">
-                                Innovatrice de la batterie moderne, elle fusionne grooves complexes et mélodies percutantes. 
-                                Reconnue pour sa virtuosité et sa créativité, elle inspire une nouvelle 
-                                génération de batteurs à travers le monde.
-                            </p>
-                        </article>
-
-                        <article class="right_column_artist">
-
-                            <iframe class="videos_index_brk1" src="https://www.youtube.com/embed/iTTcILc7m14?si=6i456g_qNx_TDlsI" title="Drum solo - 2015" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen allowautoplay>
-
-                            </iframe>
-
-                        </article>
-
-                    </article>
-
-                </article>
-
+            
+            <!-- Jonathan Moffett Section -->
+            <section class="section_footer">
+                <img class="portraits_footer" 
+                     src="images/Moffet/footer.jpg" 
+                     alt="Jonathan Moffett portrait">
+                <ul class="ul_links_footer">
+                    <li class="li_links_footer">
+                        <a href="fansite2.html" class="link_footer">Jonathan Moffett</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite2.html#biographie" class="link_child_footer">Biography</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite2.html#news" class="link_child_footer">News</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite2.html#concerts" class="link_child_footer">Concerts</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite2.html#evenements" class="link_child_footer">Events</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite2.html#photo-video" class="link_child_footer">Photos and Videos</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite2.html#liens" class="link_child_footer">Links</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="contact.html" class="link_child_footer">Contact</a>
+                    </li>
+                </ul>
             </section>
-
-        </main>
-
-        <footer class="footer">
-
-            <nav class="nav_footer">
-
-                <section class="section_footer">
-
-                    <img class="portraits_footer" src="images/Blakey/footer.jpg" alt="">
-
-                    <ul class="ul_links_footer">
-
-                        <li class="li_links_footer">
-                            <a href="fansite1.html" class="link_footer">Art Blakey</a>
-                        </li>
+            
+            <!-- Anika Nilles Section -->
+            <section class="section_footer">
+                <img class="portraits_footer" 
+                     src="images/Nilles/footer.jpg" 
+                     alt="Anika Nilles portrait">
+                <ul class="ul_links_footer">
+                    <li class="li_links_footer">
+                        <a href="fansite3.html" class="link_footer">Anika Nilles</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite3.html#biographie" class="link_child_footer">Biography</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite3.html#news" class="link_child_footer">News</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite3.html#concerts" class="link_child_footer">Concerts</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite3.html#evenements" class="link_child_footer">Events</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite3.html#photo-video" class="link_child_footer">Photos and Videos</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="fansite3.html#liens" class="link_child_footer">Links</a>
+                    </li>
+                    <li class="li_links_footer">
+                        <a href="contact.html" class="link_child_footer">Contact</a>
+                    </li>
+                </ul>
+            </section>
+            
+        </nav>
+        <!-- End of nav_footer -->
         
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#biographie" class="link_child_footer">Biographie</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#news" class="link_child_footer">News</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#concerts" class="link_child_footer">Concerts</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#evenements" class="link_child_footer">Événements</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#photo-video" class="link_child_footer">Photos et vidéos</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#liens" class="link_child_footer">Liens</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="contact.html" class="link_child_footer">Contact</a>
-                            </li>
+        <!-- Desktop Footer Navigation (Breakpoint 2) -->
+        <!-- Same structure, displayed on larger screens -->
+        <nav class="nav_footer_brk2">
+            <section class="section_footer">
+                <img class="portraits_footer" src="images/Blakey/footer.jpg" alt="Art Blakey portrait">
+                <ul class="ul_links_footer">
+                    <li class="li_links_footer"><a href="fansite1.html" class="link_footer">Art Blakey</a></li>
+                    <li class="li_links_footer"><a href="fansite1.html#biographie" class="link_child_footer">Biography</a></li>
+                    <li class="li_links_footer"><a href="fansite1.html#news" class="link_child_footer">News</a></li>
+                    <li class="li_links_footer"><a href="fansite1.html#concerts" class="link_child_footer">Concerts</a></li>
+                    <li class="li_links_footer"><a href="fansite1.html#evenements" class="link_child_footer">Events</a></li>
+                    <li class="li_links_footer"><a href="fansite1.html#photo-video" class="link_child_footer">Photos and Videos</a></li>
+                    <li class="li_links_footer"><a href="fansite1.html#liens" class="link_child_footer">Links</a></li>
+                    <li class="li_links_footer"><a href="contact.html" class="link_child_footer">Contact</a></li>
+                </ul>
+            </section>
+            <section class="section_footer">
+                <img class="portraits_footer" src="images/Moffet/footer.jpg" alt="Jonathan Moffett portrait">
+                <ul class="ul_links_footer">
+                    <li class="li_links_footer"><a href="fansite2.html" class="link_footer">Jonathan Moffett</a></li>
+                    <li class="li_links_footer"><a href="fansite2.html#biographie" class="link_child_footer">Biography</a></li>
+                    <li class="li_links_footer"><a href="fansite2.html#news" class="link_child_footer">News</a></li>
+                    <li class="li_links_footer"><a href="fansite2.html#concerts" class="link_child_footer">Concerts</a></li>
+                    <li class="li_links_footer"><a href="fansite2.html#evenements" class="link_child_footer">Events</a></li>
+                    <li class="li_links_footer"><a href="fansite2.html#photo-video" class="link_child_footer">Photos and Videos</a></li>
+                    <li class="li_links_footer"><a href="fansite2.html#liens" class="link_child_footer">Links</a></li>
+                    <li class="li_links_footer"><a href="contact.html" class="link_child_footer">Contact</a></li>
+                </ul>
+            </section>
+            <section class="section_footer">
+                <img class="portraits_footer" src="images/Nilles/footer.jpg" alt="Anika Nilles portrait">
+                <ul class="ul_links_footer">
+                    <li class="li_links_footer"><a href="fansite3.html" class="link_footer">Anika Nilles</a></li>
+                    <li class="li_links_footer"><a href="fansite3.html#biographie" class="link_child_footer">Biography</a></li>
+                    <li class="li_links_footer"><a href="fansite3.html#news" class="link_child_footer">News</a></li>
+                    <li class="li_links_footer"><a href="fansite3.html#concerts" class="link_child_footer">Concerts</a></li>
+                    <li class="li_links_footer"><a href="fansite3.html#evenements" class="link_child_footer">Events</a></li>
+                    <li class="li_links_footer"><a href="fansite3.html#photo-video" class="link_child_footer">Photos and Videos</a></li>
+                    <li class="li_links_footer"><a href="fansite3.html#liens" class="link_child_footer">Links</a></li>
+                    <li class="li_links_footer"><a href="contact.html" class="link_child_footer">Contact</a></li>
+                </ul>
+            </section>
+        </nav>
+        <!-- End of nav_footer_brk2 -->
         
-                    </ul>
-
-                </section>
-
-                <section class="section_footer">
-
-                    <img class="portraits_footer" src="images/Moffet/footer.jpg" alt="">
-                    
-                    <ul class="ul_links_footer">
-
-                        <li class="li_links_footer">
-                            <a href="fansite2.html" class="link_footer">Jonathan Moffet</a>
-                        </li>
-        
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#biographie" class="link_child_footer">Biographie</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#news" class="link_child_footer">News</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#concerts" class="link_child_footer">Concerts</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#evenements" class="link_child_footer">Événements</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#photo-video" class="link_child_footer">Photos et vidéos</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#liens" class="link_child_footer">Liens</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="contact.html" class="link_child_footer">Contact</a>
-                            </li>
-        
-                    </ul>
-
-                </section>
-
-                <section class="section_footer">
-
-                    <img class="portraits_footer" src="images/Nilles/footer.jpg" alt="">
-                    
-                    <ul class="ul_links_footer">
-
-                        <li class="li_links_footer">
-                            <a href="fansite3.html" class="link_footer">Anika Nilles</a>
-                        </li>
-        
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#biographie" class="link_child_footer">Biographie</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#news" class="link_child_footer">News</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#concerts" class="link_child_footer">Concerts</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#evenements" class="link_child_footer">Événements</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#photo-video" class="link_child_footer">Photos et vidéos</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#liens" class="link_child_footer">Liens</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="contact.html" class="link_child_footer">Contact</a>
-                            </li>
-        
-                    </ul>
-
-                </section>
-
-            </nav>
-
-<!--Breakpoint 2 footer-->
-            <nav class="nav_footer_brk2">
-
-                <section class="section_footer">
-
-                    <img class="portraits_footer" src="images/Blakey/footer.jpg" alt="">
-
-                    <ul class="ul_links_footer">
-
-                        <li class="li_links_footer">
-                            <a href="fansite1.html" class="link_footer">Art Blakey</a>
-                        </li>
-
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#biographie" class="link_child_footer">Biographie</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#news" class="link_child_footer">News</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#concerts" class="link_child_footer">Concerts</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#evenements" class="link_child_footer">Événements</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#photo-video" class="link_child_footer">Photos et vidéos</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite1.html#liens" class="link_child_footer">Liens</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="contact.html" class="link_child_footer">Contact</a>
-                            </li>
-
-                    </ul>
-
-                </section>
-
-                <section class="section_footer">
-
-                    <img class="portraits_footer" src="images/Moffet/footer.jpg" alt="">
-                    
-                    <ul class="ul_links_footer">
-
-                        <li class="li_links_footer">
-                            <a href="fansite2.html" class="link_footer">Jonathan Moffet</a>
-                        </li>
-
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#biographie" class="link_child_footer">Biographie</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#news" class="link_child_footer">News</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#concerts" class="link_child_footer">Concerts</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#evenements" class="link_child_footer">Événements</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#photo-video" class="link_child_footer">Photos et vidéos</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite2.html#liens" class="link_child_footer">Liens</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="contact.html" class="link_child_footer">Contact</a>
-                            </li>
-
-                    </ul>
-
-                </section>
-
-                <section class="section_footer">
-
-                    <img class="portraits_footer" src="images/Nilles/footer.jpg" alt="">
-                    
-                    <ul class="ul_links_footer">
-
-                        <li class="li_links_footer">
-                            <a href="fansite3.html" class="link_footer">Anika Nilles</a>
-                        </li>
-
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#biographie" class="link_child_footer">Biographie</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#news" class="link_child_footer">News</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#concerts" class="link_child_footer">Concerts</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#evenements" class="link_child_footer">Événements</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#photo-video" class="link_child_footer">Photos et vidéos</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="fansite3.html#liens" class="link_child_footer">Liens</a>
-                            </li>
-                            <li class="li_links_footer">
-                                <a href="contact.html" class="link_child_footer">Contact</a>
-                            </li>
-
-                    </ul>
-
-                </section>
-
-            </nav>           
-
-
-        </footer>
-
-    </body>
-
+    </footer>
+    <!-- End of footer -->
+    
+</body>
 </html>
