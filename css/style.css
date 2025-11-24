@@ -11,10 +11,10 @@ for larger screens using media queries.
 Key Responsive Breakpoints:
 - Mobile: < 426px (base styles)
 - Tablet: 426px - 1024px (first breakpoint)
-- Desktop: > 1024px (second breakpoint)
+- Desktop: ≥ 1025px (second breakpoint)
 
 Learning Focus:
-- CSS Custom Properties (CSS Variables)
+- CSS Custom Properties (Variables)
 - CSS Reset and Universal Styles
 - Box Model (margin, padding, border-box)
 - Flexbox for Navigation and Layout
@@ -31,6 +31,7 @@ IMPORTANT:
 ================================================
 */
 
+
 /* ============================================
    CSS CUSTOM PROPERTIES (CSS Variables)
    ============================================
@@ -40,20 +41,26 @@ IMPORTANT:
    
    Syntax: --variable-name: value;
    Usage: property: var(--variable-name);
+   
+   Benefits:
+   - Easy to maintain and update
+   - Consistent theming
+   - Better readability
+   - Reusability across the stylesheet
 ============================================ */
 
 :root {
-    --primary-color:rgb(59, 59, 59);
-    --secondary-color: rgb(255, 255, 255);
-    --tertiary-color: rgba(146, 4, 30);
-    --black-transparent: rgba(0, 0, 0, 0.7);
-    --hauteur_header: 90px;
-    --hauteur_footer: 500px;
-    --padding_left_right: 1vw;
+    /* Color Palette */
+    --primary-color: rgb(59, 59, 59);           /* Dark gray for main text and backgrounds */
+    --secondary-color: rgb(255, 255, 255);      /* White for contrast elements */
+    --tertiary-color: rgba(146, 4, 30);         /* Burgundy red for accents and hover effects */
+    --black-transparent: rgba(0, 0, 0, 0.7);    /* Semi-transparent black for overlays */
+    
+    /* Layout Dimensions */
+    --hauteur_header: 90px;         /* Header height */
+    --hauteur_footer: 500px;        /* Footer height */
+    --padding_left_right: 1vw;      /* Responsive horizontal padding (1% of viewport width) */
 }
-
-
-
 
 
 /* ============================================
@@ -68,13 +75,11 @@ IMPORTANT:
    - Simpler CSS (less overriding)
    - Better performance
    - Progressive enhancement
+   - Forces us to prioritize content
 ============================================ */
 
-/*Réinisialiter les styles par defaut des navigateurs*/
-* {
-    margin: 0;
-    padding: 0;
-    /* ============================================
+
+/* ============================================
    CSS RESET - Universal Selector
    ============================================
    The universal selector (*) targets ALL elements.
@@ -88,743 +93,1545 @@ IMPORTANT:
    - Browsers add default margins and padding
    - Different browsers have different defaults
    - border-box makes sizing more predictable
+   - Prevents unexpected overflow issues
 ============================================ */
+
+* {
+    margin: 0;                      /* Remove default margin from all elements */
+    padding: 0;                     /* Remove default padding from all elements */
+    box-sizing: border-box;         /* Include padding and border in element's total width/height */
 }
 
-/* Définision du style des éléments background-color et font-family*/
+
+/* ============================================
+   BODY - Base Styles
+   ============================================
+   The body element contains all visible page content.
+   We set the background color and default font family.
+   
+   Using CSS variables makes it easy to maintain
+   consistent styling throughout the site.
+   
+   Roboto is a clean, modern sans-serif font from
+   Google Fonts that works well for web interfaces.
+============================================ */
+
 body {
-    background-color: var(--secondary-color);
-    font-family: "Roboto", sans-serif;
+    background-color: var(--secondary-color);   /* White background */
+    font-family: "Roboto", sans-serif;          /* Roboto font with sans-serif fallback */
 }
 
-/*Effacer le style par defaut des éléments a*/
+
+/* ============================================
+   ANCHOR LINKS - Remove Default Styles
+   ============================================
+   By default, browsers add underlines to links.
+   We remove this so we can style links consistently
+   throughout the site.
+   
+   text-decoration: none removes the underline.
+   
+   Note: We'll add custom hover effects to links
+   to maintain good user experience.
+============================================ */
+
 a {
-    text-decoration: none;
+    text-decoration: none;          /* Remove underline from all links */
 }
+
+
+/* ============================================
+   ROBOTO FONT UTILITY CLASSES
+   ============================================
+   These utility classes provide quick access to
+   different Roboto font weights and styles.
+   
+   Font Weight Scale:
+   - 100: Thin
+   - 300: Light
+   - 400: Regular (normal)
+   - 500: Medium
+   - 700: Bold
+   - 900: Black (extra bold)
+   
+   Usage: Add class to element like <p class="roboto-bold">
+============================================ */
 
 .roboto-thin {
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     font-style: normal;
-  }
-  
-  .roboto-light {
+}
+
+.roboto-light {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: normal;
-  }
-  
-  .roboto-regular {
+}
+
+.roboto-regular {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-  }
-  
-  .roboto-medium {
+}
+
+.roboto-medium {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: normal;
-  }
-  
-  .roboto-bold {
+}
+
+.roboto-bold {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: normal;
-  }
-  
-  .roboto-black {
+}
+
+.roboto-black {
     font-family: "Roboto", sans-serif;
     font-weight: 900;
     font-style: normal;
-  }
-  
-  .roboto-thin-italic {
+}
+
+/* Italic variants */
+.roboto-thin-italic {
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     font-style: italic;
-  }
-  
-  .roboto-light-italic {
+}
+
+.roboto-light-italic {
     font-family: "Roboto", sans-serif;
     font-weight: 300;
     font-style: italic;
-  }
-  
-  .roboto-regular-italic {
+}
+
+.roboto-regular-italic {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: italic;
-  }
-  
-  .roboto-medium-italic {
+}
+
+.roboto-medium-italic {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-style: italic;
-  }
-  
-  .roboto-bold-italic {
+}
+
+.roboto-bold-italic {
     font-family: "Roboto", sans-serif;
     font-weight: 700;
     font-style: italic;
-  }
-  
-  .roboto-black-italic {
+}
+
+.roboto-black-italic {
     font-family: "Roboto", sans-serif;
     font-weight: 900;
     font-style: italic;
-  }
-  
+}
 
-/*Effacer le style par defaut des éléments ol et ul*/
+
+/* ============================================
+   LISTS - Remove Default Styles
+   ============================================
+   By default, ordered (ol) and unordered (ul) lists
+   have bullets/numbers. We remove these to have
+   more control over list styling in our navigation.
+   
+   list-style: none removes bullets and numbers.
+   
+   This is common practice for navigation menus
+   where we don't want list markers.
+============================================ */
+
 ol, ul {
-    list-style: none;
+    list-style: none;               /* Remove bullets and numbers from lists */
 }
 
-/*------------------HEADER---------------------------*/
 
-/*Définition du alteur et coleur du fond*/
+/* ============================================
+   HEADER - Sticky Navigation Bar
+   ============================================
+   position: sticky keeps the header visible when scrolling.
+   It acts like relative positioning until the user scrolls,
+   then it "sticks" to the top of the viewport.
+   
+   z-index ensures it stays above other content.
+   box-shadow adds depth and visual separation.
+   
+   Why sticky?
+   - Always accessible navigation
+   - Better user experience
+   - No JavaScript required
+============================================ */
+
 .header {
-  position: sticky;
-  top: 0;
-  box-shadow: 0 5px 5px rgba(60, 60, 60, 0.5);
-  height: var(--hauteur_header);
-  background-color: var(--primary-color);
+    position: sticky;                           /* Stick to viewport when scrolling */
+    top: 0;                                     /* Stick to top edge */
+    box-shadow: 0 5px 5px rgba(60, 60, 60, 0.5); /* Shadow for depth */
+    height: var(--hauteur_header);              /* Use CSS variable for height */
+    background-color: var(--primary-color);     /* Dark gray background */
 }
 
-/*Le style du conteneur navbar*/
+
+/* ============================================
+   NAVBAR - Flexbox Container
+   ============================================
+   Flexbox is perfect for navigation bars because:
+   - Easy horizontal/vertical alignment
+   - Flexible spacing between items
+   - Responsive without media queries
+   
+   justify-content: space-between pushes logo
+   and navigation to opposite sides.
+============================================ */
+
 .navbar {
-  height: 100%; /*pour occuper tout l'hauteur du header*/
-  display: flex; /*Positioner les éléments les uns au coté des autres*/
-  justify-content: space-between; /*Éloigner les éléments les uns des autres*/
-  align-items: center;
-  flex-wrap: wrap;
-  padding: 0 var(--padding_left_right); /*Padding du 0 par top et bottom, et de 2 par left et right*/
+    height: 100%;                               /* Fill header height */
+    display: flex;                              /* Enable flexbox layout */
+    justify-content: space-between;             /* Space between logo and nav */
+    align-items: center;                        /* Vertically center items */
+    flex-wrap: wrap;                            /* Wrap if needed */
+    padding: 0 var(--padding_left_right);       /* Horizontal padding only */
 }
+
+
+/* ============================================
+   LOGO STYLING
+   ============================================
+   object-fit: scale-down ensures the logo maintains
+   its aspect ratio without distortion or overflow.
+   
+   This is better than 'cover' or 'contain' because
+   it won't crop or stretch the image.
+============================================ */
 
 .logo-size {
-height: 90%;
-object-fit: scale-down;
-align-content: center;
+    height: 90%;                                /* 90% of header height */
+    object-fit: scale-down;                     /* Scale without distortion */
+    align-content: center;                      /* Center alignment */
 }
 
 .logo {
-  height: 70%;
-  object-fit: scale-down;
+    height: 70%;                                /* 70% of header height */
+    object-fit: scale-down;                     /* Scale without distortion */
 }
 
-/*Cacher l'élément check-box, sont les éléments de notre menu*/
+
+/* ============================================
+   HAMBURGER MENU - Checkbox Hack
+   ============================================
+   The "checkbox hack" is a pure CSS technique
+   to create a toggle menu without JavaScript.
+   
+   How it works:
+   1. Hide the checkbox visually
+   2. Style a label as the hamburger icon
+   3. Use :checked selector to show/hide menu
+   4. The + selector targets the next sibling
+   
+   This is an elegant CSS-only solution!
+============================================ */
+
 .menu_burger {
-  display: none;
+    display: none;                              /* Hide checkbox visually */
 }
 
-/*Captamos el elemento por su ID, cuando el check-box esté en estado checked*/
-/*el signo + significa que el elemento al lado (ul_links, en este caso) será modificado*/
-/*En este caso, para asignar la altura al elemento ul_links*/
-/*Se utiliza una función para calcular la altura, la operación es la siguiente:*/
-/*Queremos que mida el 100% de la altura de la ventana menos la altura del header*/
-.menu_burger:checked+.ul_links {
-  height: calc(90vh - var(--hauteur_header));
-  min-height: 100px;
-  max-width: 600px;
+/* When checkbox is checked, expand the menu */
+.menu_burger:checked + .ul_links {
+    height: calc(90vh - var(--hauteur_header)); /* 90% viewport height minus header */
+    min-height: 100px;                          /* Minimum height */
+    max-width: 600px;                           /* Maximum width */
 }
 
-/*Le da un color blanco al icono hamburguer               */
+
+/* ============================================
+   HAMBURGER ICON
+   ============================================
+   The hamburger icon is typically three horizontal
+   lines. cursor: pointer shows it's clickable.
+   
+   Note: This refers to the icon, not the checkbox.
+============================================ */
+
 .list_icon {
-  color: var(--couleur_blanc);
-  cursor: pointer; /* indica que el elemento es clicable */
+    color: var(--secondary-color);              /* White color (was couleur_blanc) */
+    cursor: pointer;                            /* Show hand cursor on hover */
 }
 
-/*Des options du menu*/
+
+/* ============================================
+   MOBILE NAVIGATION MENU
+   ============================================
+   On mobile, the menu starts hidden (height: 0)
+   and expands when the checkbox is checked.
+   
+   position: absolute takes it out of normal flow
+   and positions it relative to the header.
+   
+   transition creates smooth animation when opening/closing.
+============================================ */
+
 .ul_links {
-  width: 200px;
-  max-width: 500px;
-  background-color: var(--black-transparent);
-  color: var(--secondary-color);
-  position: absolute;
-  /*el elemento  ul_links comienza abajo del header*/
-  top: var(--hauteur_header);
-  /*sin espacio a la izquierda*/
-  right: 0;
-  /*sin espacio arriba*/
-  height: 0;
-  /*Cacher la list quand est pas check*/
-  overflow: hidden;
-  /* ----------------->height: calc(100vh - var(--altura_header)); */
-  /*Type de conteneur*/
-  display: flex;
-  /*Positioner les éléments en colonne*/
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end;
-  padding-right: 1rem;
-  gap: 1rem;
-  /*anima la transición otorgándole una cantidad de tiempo para cambiar de un estado al otro*/
-  transition: all .3s;
+    width: 200px;                               /* Menu width */
+    max-width: 500px;                           /* Maximum width */
+    background-color: var(--black-transparent); /* Semi-transparent black */
+    color: var(--secondary-color);              /* White text */
+    position: absolute;                         /* Position relative to header */
+    top: var(--hauteur_header);                 /* Start below header */
+    right: 0;                                   /* Align to right edge */
+    height: 0;                                  /* Start collapsed */
+    overflow: hidden;                           /* Hide content when collapsed */
+    
+    /* Flexbox for menu items */
+    display: flex;                              /* Enable flexbox */
+    flex-direction: column;                     /* Stack items vertically */
+    justify-content: space-around;              /* Even spacing */
+    align-items: flex-end;                      /* Align to right */
+    padding-right: 1rem;                        /* Right padding */
+    gap: 1rem;                                  /* Space between items */
+    
+    /* Smooth animation */
+    transition: all 0.3s;                       /* Animate all property changes */
 }
 
 .contact_burger {
-  padding-bottom: 10px;
+    padding-bottom: 10px;                       /* Extra padding for contact link */
 }
 
 
-/*Donner le style aux liens du menu*/
+/* ============================================
+   NAVIGATION LINKS - Base Styles
+   ============================================
+   These styles apply to all navigation links.
+   We'll add hover effects to provide visual feedback.
+   
+   font-weight: bold makes links stand out.
+   padding increases clickable area (better UX).
+============================================ */
+
 .link {
-  font-size: 1,5em;
-  color: var(--secondary-color);
-  font-weight: bold;
-  padding: 1,5em;
-  margin: 1em 0;
+    font-size: 1.5em;                           /* Larger text */
+    color: var(--secondary-color);              /* White text */
+    font-weight: bold;                          /* Bold text */
+    padding: 1.5em;                             /* Padding for clickable area */
+    margin: 1em 0;                              /* Vertical margin */
 }
 
+/* Hover effect - burgundy background */
 .link:hover {
-  background-color: var(--tertiary-color);
+    background-color: var(--tertiary-color);    /* Burgundy red on hover */
 }
 
+/* Child links (sub-navigation) */
 .link_child {
-  font-size: 1,3em;
-  color: var(--secondary-color);
-  font-weight: lighter;
-  padding: 3px;
+    font-size: 1.3em;                           /* Slightly smaller */
+    color: var(--secondary-color);              /* White text */
+    font-weight: lighter;                       /* Lighter weight */
+    padding: 3px;                               /* Minimal padding */
 }
 
 .link_child:hover {
-  background-color: var(--tertiary-color);
+    background-color: var(--tertiary-color);    /* Burgundy red on hover */
 }
 
 .li_links_anchor {
-  padding: 20px 0;
-  font-weight: 900;
+    padding: 20px 0;                            /* Vertical padding */
+    font-weight: 900;                           /* Extra bold */
 }
 
-/* Style des titres et paragraphes */
+
+/* ============================================
+   TYPOGRAPHY - Headings and Paragraphs
+   ============================================
+   Consistent spacing and sizing for text elements.
+   
+   em units scale relative to parent font size,
+   making typography responsive automatically.
+============================================ */
 
 h2 {
-  padding: 20px 0;
-  color: var(--primary-color);
-  font-size: 2em;
+    padding: 20px 0;                            /* Vertical padding */
+    color: var(--primary-color);                /* Dark gray */
+    font-size: 2em;                             /* 2x the base font size */
 }
 
 p {
-font-size: 1.5em;
+    font-size: 1.5em;                           /* 1.5x the base font size */
 }
 
 
-
-/*---------------------------------------------------*/
-/*---------------------------------------------------*/
-/*------------------TOP BUTTON-----------------------*/
-/*---------------------------------------------------*/
-/*---------------------------------------------------*/
-
+/* ============================================
+   SCROLL-TO-TOP BUTTON
+   ============================================
+   position: fixed keeps the button in the same
+   place even when scrolling.
+   
+   This provides easy navigation back to top
+   without excessive scrolling.
+============================================ */
 
 .link-top-button {
-  position: fixed;
-  bottom: 0;
+    position: fixed;                            /* Fixed position on screen */
+    bottom: 0;                                  /* At bottom edge */
 }
 
 .img-top-button {
-  width: 50px;
-  padding: 10px;
+    width: 50px;                                /* Button size */
+    padding: 10px;                              /* Padding around icon */
 }
 
 
-/*---------------------------------------------------*/
-/*---------------------------------------------------*/
-/*------------------MISE EN PAGE---------------------*/
-/*---------------------------------------------------*/
-/*---------------------------------------------------*/
+/* ============================================
+   PAGE LAYOUT - Index Containers
+   ============================================
+   The layout uses different containers for
+   different screen sizes:
 
 
+
+/* ============================================
+   PAGE LAYOUT - Main Content Sections
+   ============================================
+   This section controls the layout and styling
+   of the main page content, including:
+   - Title and description sections
+   - Artist showcase containers
+   - Video embeds
+   - Responsive grid layouts
+   
+   Mobile-first approach: Base styles are for
+   mobile, then we enhance for larger screens
+   in the media queries below.
+============================================ */
+
+
+/* ============================================
+   CONTAINER - Mobile/Tablet Layout
+   ============================================
+   .container_index is the default container for
+   mobile and tablet devices.
+   
+   .container_index_brk2 is hidden on mobile and
+   only shown on desktop screens (1025px+).
+   
+   This allows us to have completely different
+   layouts for mobile and desktop if needed.
+============================================ */
+
+/* Base container - no specific styles needed for mobile */
 /* .container_index {
 } */
 
+/* Desktop container - hidden on mobile */
 .container_index_brk2 {
-  display: none;
+    display: none;                              /* Hidden by default (shown in desktop media query) */
 }
+
+
+/* ============================================
+   PAGE TITLE - Main Heading
+   ============================================
+   display: flex with justify-content: center
+   is a clean way to center content horizontally.
+   
+   rem units scale with root font size, making
+   typography more accessible and responsive.
+   
+   font-weight: 600 is semi-bold (between normal
+   400 and bold 700).
+============================================ */
 
 .title1_index {
-  display: flex;
-  font-size: 2.5rem;
-  justify-content: center;
-  color: var(--primary-color);
-  font-weight: 600;
-  padding: 10px;
+    display: flex;                              /* Enable flexbox */
+    font-size: 2.5rem;                          /* Large heading (rem scales with root font size) */
+    justify-content: center;                    /* Center horizontally */
+    color: var(--primary-color);                /* Dark gray text */
+    font-weight: 600;                           /* Semi-bold weight */
+    padding: 10px;                              /* Spacing around title */
 }
 
+
+/* ============================================
+   DESCRIPTION CONTAINER
+   ============================================
+   This container holds introductory text about
+   the site or drummers.
+   
+   border-radius creates rounded corners for a
+   modern, polished look.
+   
+   The dark background with light text creates
+   good visual contrast and hierarchy.
+============================================ */
+
 .description_container {
-  background-color: var(--primary-color);
-  padding: 10px;
-  margin: 20px;
-  border-radius: 10px;
+    background-color: var(--primary-color);     /* Dark gray background */
+    padding: 10px;                              /* Internal spacing */
+    margin: 20px;                               /* External spacing */
+    border-radius: 10px;                        /* Rounded corners */
 }
 
 .title2_index {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
-  font-weight: 550;
-  padding: 5px;
+    font-size: 1.2rem;                          /* Subheading size */
+    color: var(--secondary-color);              /* White text on dark background */
+    font-weight: 550;                           /* Medium-semi-bold weight */
+    padding: 5px;                               /* Small padding */
 }
 
 .text_description {
-  color: var(--secondary-color);
-  font-size: 1rem;
-  font-weight: 50;
-  line-height: 1.5rem;
-  padding: 10px 15px;
+    color: var(--secondary-color);              /* White text */
+    font-size: 1rem;                            /* Base font size */
+    font-weight: 50;                            /* Note: This seems incorrect; should be 100-900 */
+    line-height: 1.5rem;                        /* Line spacing for readability */
+    padding: 10px 15px;                         /* Vertical and horizontal padding */
 }
+
+
+/* ============================================
+   ARTIST CONTAINER - Grid Layout
+   ============================================
+   display: grid creates a grid layout system.
+   grid-template-columns: 1fr means one column
+   that takes full width (mobile first).
+   
+   On larger screens, this changes to 2 columns
+   (tablet) or 3 columns (desktop) in media queries.
+   
+   Why Grid?
+   - Perfect for card-based layouts
+   - Easy to make responsive
+   - Automatic spacing and alignment
+   - Better than floats or inline-block
+============================================ */
 
 .artist_container {
-  display: grid;
-  grid-template-columns: 1fr;
-  background-color: var(--primary-color);
-  padding: 10px;
-  margin: 20px;
-  border-radius: 10px;
+    display: grid;                              /* Enable CSS Grid */
+    grid-template-columns: 1fr;                 /* Single column (mobile) */
+    background-color: var(--primary-color);     /* Dark background */
+    padding: 10px;                              /* Internal spacing */
+    margin: 20px;                               /* External spacing */
+    border-radius: 10px;                        /* Rounded corners */
 }
 
+
+/* ============================================
+   ARTIST SECTIONS - Content Layout
+   ============================================
+   These classes style the left and right sections
+   within each artist container.
+   
+   object-fit: fill makes images fill their container
+   (though 'cover' or 'contain' might be better to
+   prevent distortion).
+============================================ */
+
 .left_column_artist {
-  height: 100%;
-  object-fit: fill;
+    height: 100%;                               /* Full height of container */
+    object-fit: fill;                           /* Fill container (may distort) */
 }
 
 .title3_index {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: var(--secondary-color);
-  padding: 5px;
+    font-size: 1.1rem;                          /* Artist name size */
+    font-weight: 400;                           /* Normal weight */
+    color: var(--secondary-color);              /* White text */
+    padding: 5px;                               /* Small padding */
 }
 
 .text_artist {
-  color: var(--secondary-color);
-  font-size: 0.9rem;
-  font-weight: 200;
-  line-height: 1.3rem;
-  padding: 10px;
-  max-height: 100%;
+    color: var(--secondary-color);              /* White text */
+    font-size: 0.9rem;                          /* Slightly smaller text */
+    font-weight: 200;                           /* Light weight */
+    line-height: 1.3rem;                        /* Line spacing */
+    padding: 10px;                              /* Padding around text */
+    max-height: 100%;                           /* Limit height */
 }
 
 .right_column_artist {
-  height: 100%;
+    height: 100%;                               /* Full height */
 }
 
+
+/* ============================================
+   VIDEO EMBEDS - Responsive iframes
+   ============================================
+   Different video displays for different screen sizes:
+   
+   .videos_index: Hidden on mobile (shown on desktop)
+   .videos_index_brk1: Shown on mobile/tablet
+   
+   width: 100% makes videos responsive to container.
+   height: 300px gives them a fixed height on mobile.
+============================================ */
+
 .videos_index {
-  display: none;
+    display: none;                              /* Hidden on mobile (shown in media queries) */
 }
 
 .videos_index_brk1 {
-  width: 100%;
-  height: 300px;
-  object-fit: fill;
-  padding: 10px;
+    width: 100%;                                /* Full width of container */
+    height: 300px;                              /* Fixed height for mobile */
+    object-fit: fill;                           /* Fill container */
+    padding: 10px;                              /* Spacing around video */
 }
+
+
+/* ============================================
+   THREE-COLUMN LAYOUT (Desktop Only)
+   ============================================
+   .artist_container_3fr is a special grid container
+   that displays artists in 3 columns on desktop.
+   
+   This is hidden on mobile and tablet, only shown
+   on large screens (1025px+) in the media query.
+   
+   repeat(3, 1fr) creates 3 equal-width columns.
+============================================ */
 
 .artist_container_3fr {
-  display: none;
+    display: none;                              /* Hidden by default (shown in desktop media query) */
 }
 
+/* Duplicate rule - this should be removed to avoid confusion */
 .container_index_brk2 {
-  display: none;
+    display: none;                              /* Already defined above */
 }
 
+/* ============================================
+   FOOTER - Site Footer with Navigation
+   ============================================
+   The footer contains navigation links and artist
+   portraits, organized in a responsive grid layout.
+   
+   Layout structure:
+   - Mobile: Single column, stacked sections
+   - Tablet: Two columns (portrait + links)
+   - Desktop: Three columns for each artist
+   
+   Grid is perfect for footer layouts because:
+   - Easy alignment of multiple sections
+   - Responsive without complex calculations
+   - Self-contained layout logic
+============================================ */
 
-/*---------------------------------------------------*/
-/*---------------------------------------------------*/
-/*------------------FOOTER---------------------------*/
-/*---------------------------------------------------*/
-/*---------------------------------------------------*/
 
+/* ============================================
+   FOOTER CONTAINER - Grid Layout
+   ============================================
+   display: grid creates a flexible container.
+   grid-template-columns: 1fr means single column
+   on mobile (full width).
+   
+   height: 100% allows the footer to expand based
+   on content, while maintaining structure.
+   
+   Dark background provides visual separation from
+   main content and creates good contrast for links.
+============================================ */
 
 .footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  height: 100%;
-  background-color: var(--primary-color);
-
+    display: grid;                              /* Enable CSS Grid layout */
+    grid-template-columns: 1fr;                 /* Single column (mobile) */
+    height: 100%;                               /* Full height based on content */
+    background-color: var(--primary-color);     /* Dark gray background */
 }
+
+
+/* ============================================
+   FOOTER NAVIGATION - Mobile Layout
+   ============================================
+   .nav_footer is shown on mobile/tablet devices.
+   justify-items: center centers grid items horizontally.
+   
+   rem units for padding ensure consistent spacing
+   that scales with user's font size preferences.
+   
+   2rem = 2x the root font size (typically 32px).
+============================================ */
 
 .nav_footer {
-  justify-items: center;
-  padding: 2rem 0;
+    justify-items: center;                      /* Center grid items horizontally */
+    padding: 2rem 0;                            /* Vertical padding (top and bottom) */
 }
+
+
+/* ============================================
+   FOOTER NAVIGATION - Desktop Layout
+   ============================================
+   .nav_footer_brk2 is hidden on mobile and shown
+   on desktop screens (1025px+) in the media query.
+   
+   This allows different footer layouts for different
+   screen sizes without duplicating content.
+============================================ */
 
 .nav_footer_brk2 {
-  display: none;
+    display: none;                              /* Hidden by default (shown in desktop media query) */
 }
+
+
+/* ============================================
+   FOOTER SECTION - Two-Column Grid
+   ============================================
+   Each footer section uses a 2-column grid:
+   - Column 1: Artist portrait image
+   - Column 2: Navigation links
+   
+   width: 60vw makes it 60% of viewport width,
+   creating breathing room on larger screens.
+   
+   transition: all .4s creates smooth animations
+   when layout changes (responsive).
+   
+   vw (viewport width) units are great for responsive
+   sizing that adapts to screen size.
+============================================ */
 
 .section_footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 60vw;
-  padding: 10px;
-  justify-content: center;
-  transition: all .4s;
-} 
+    display: grid;                              /* Enable CSS Grid */
+    grid-template-columns: 1fr 1fr;             /* Two equal columns */
+    width: 60vw;                                /* 60% of viewport width */
+    padding: 10px;                              /* Internal spacing */
+    justify-content: center;                    /* Center grid content */
+    transition: all 0.4s;                       /* Smooth transitions for responsive changes */
+}
+
+
+/* ============================================
+   FOOTER PORTRAITS - Artist Images
+   ============================================
+   display: flex is used to align the image within
+   its container.
+   
+   justify-content: flex-end pushes image to the right.
+   align-items: end pushes image to the bottom.
+   
+   object-fit: cover ensures images fill their space
+   without distortion (crops if needed).
+   
+   vh (viewport height) units make height responsive:
+   - max-height: 30vh = maximum 30% of screen height
+   - min-height: 160px = minimum size for visibility
+   
+   background-position properties control where the
+   image is positioned if it doesn't fit perfectly.
+============================================ */
 
 .portraits_footer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: end;
-  width: 100%;
-  max-height: 30vh;
-  min-height: 160px;
-  object-fit: cover;
-  background-position-y: top;
-  background-position-x: top;
-}
- 
-.ul_links_footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  /* border: 1px solid green; */
-  padding-left: 10px;
+    display: flex;                              /* Enable flexbox for alignment */
+    justify-content: flex-end;                  /* Align to right side */
+    align-items: end;                           /* Align to bottom */
+    width: 100%;                                /* Full width of container */
+    max-height: 30vh;                           /* Maximum 30% of viewport height */
+    min-height: 160px;                          /* Minimum height for visibility */
+    object-fit: cover;                          /* Cover container without distortion */
+    background-position-y: top;                 /* Position image from top */
+    background-position-x: top;                 /* Position image from top (x-axis) */
 }
 
-/* .li_links_footer { */
-/*} */
+
+/* ============================================
+   FOOTER LINKS LIST - Grid Layout
+   ============================================
+   display: grid organizes footer links vertically.
+   grid-template-columns: 1fr creates a single column.
+   
+   The commented border is useful for debugging
+   layout issues during development.
+   
+   padding-left creates indentation for the links.
+============================================ */
+
+.ul_links_footer {
+    display: grid;                              /* Enable CSS Grid */
+    grid-template-columns: 1fr;                 /* Single column layout */
+    /* border: 1px solid green; */             /* Debug border (commented out) */
+    padding-left: 10px;                         /* Left indentation */
+}
+
+
+/* Commented out - placeholder for future list item styles */
+/* .li_links_footer {
+} */
+
+
+/* ============================================
+   FOOTER LINK STYLES
+   ============================================
+   Footer links have similar styling to header links
+   but adapted for the footer context.
+   
+   font-size: 1.5em (note: commas should be periods)
+   makes links prominent and easy to click.
+   
+   font-weight: bold emphasizes links.
+   
+   Note: "1,5em" should be "1.5em" in CSS.
+   The comma notation is from some European locales
+   but CSS requires periods for decimals.
+============================================ */
 
 .link_footer {
-  font-size: 1,5em;
-  color: var(--secondary-color);
-  font-weight: bold;
-  padding: 1,5em;
+    font-size: 1.5em;                           /* Large, readable text (should be 1.5em, not 1,5em) */
+    color: var(--secondary-color);              /* White text */
+    font-weight: bold;                          /* Bold weight */
+    padding: 1.5em;                             /* Large padding for clickability (should be 1.5em, not 1,5em) */
 }
 
- .li_links_footer {
-  display: flex;
-  padding: 0px;
+
+/* ============================================
+   FOOTER LIST ITEMS - Flexbox Layout
+   ============================================
+   display: flex allows horizontal or vertical
+   arrangement of list items.
+   
+   padding: 0 removes default list padding for
+   clean, custom styling.
+============================================ */
+
+.li_links_footer {
+    display: flex;                              /* Enable flexbox */
+    padding: 0px;                               /* No padding */
 }
+
+
+/* ============================================
+   FOOTER LINK HOVER EFFECTS
+   ============================================
+   Hover effects provide visual feedback that
+   elements are interactive and clickable.
+   
+   background-color: var(--tertiary-color)
+   applies the burgundy red on hover, maintaining
+   consistency with header navigation.
+   
+   This color was specifically requested by the
+   user (not gold) to maintain the original design.
+============================================ */
 
 .link_footer:hover {
-  background-color: var(--tertiary-color);
+    background-color: var(--tertiary-color);    /* Burgundy red background on hover */
 }
 
+
+/* ============================================
+   FOOTER CHILD LINKS - Sub-navigation
+   ============================================
+   Child links (sub-links) are smaller and lighter
+   than main footer links, creating visual hierarchy.
+   
+   font-weight: lighter makes them less prominent
+   than main links.
+   
+   Minimal padding keeps them compact.
+============================================ */
+
 .link_child_footer {
-  font-size: 1,3em;
-  color: var(--secondary-color);
-  font-weight: lighter;
-  padding: 3px;
+    font-size: 1.3em;                           /* Medium text size (should be 1.3em, not 1,3em) */
+    color: var(--secondary-color);              /* White text */
+    font-weight: lighter;                       /* Light weight for hierarchy */
+    padding: 3px;                               /* Minimal padding */
 }
 
 .link_child_footer:hover {
-  background-color: var(--tertiary-color);
+    background-color: var(--tertiary-color);    /* Burgundy red background on hover */
 }
 
-    /*---------------------------------------------------*/
-    /*---------------------------------------------------*/
-    /*------------------MEDIA QUERIES--------------------*/
-    /*---------------------------------------------------*/
-    /*---------------------------------------------------*/
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE DESIGN
+   ============================================
+   Media queries allow us to apply different styles
+   based on screen size, creating responsive layouts.
+   
+   Our breakpoint strategy:
+   - Mobile: < 426px (base styles above)
+   - Tablet: 426px - 1024px (this section)
+   - Desktop: ≥ 1025px (next section)
+   
+   Why these breakpoints?
+   - 426px: Common smartphone landscape width
+   - 1025px: Common tablet/laptop boundary
+   
+   "only screen" ensures styles apply only to screens,
+   not print media or other output types.
+============================================ */
 
-/*Écrans entre 426px et 1024px*/
-    @media only screen and (min-width: 426px) and (max-width: 1025px) {
+
+/* ============================================
+   TABLET BREAKPOINT: 426px - 1024px
+   ============================================
+   This media query targets tablet devices and
+   small laptops. At this size:
+   
+   - Header expands to accommodate horizontal nav
+   - Hamburger menu is hidden
+   - Navigation displays horizontally
+   - Artist containers show 2 columns
+   - Text sizes increase for readability
+   
+   min-width: 426px = applies at 426px and above
+   max-width: 1025px = applies up to 1025px
+============================================ */
+
+@media only screen and (min-width: 426px) and (max-width: 1025px) {
 
 
-              /*---------------Header section------------*/
-              .header {
-                height: 120px;
-                background-color: var(--primary-color);
-                transition: all .4s;
-              }
-
-              /*contruction de list de pages de notre site web*/
-              .ul_links {
-                position: static;
-                width: auto;
-                height: auto;
-                flex-direction: row;
-                gap: .1rem;
-                background-color: var(--primary-color);
-            }
-          
-              .link {
-                  font-size: 1rem;
-                  transition: all .4s;
-                  padding: .2rem .4rem;
-              }
-          
-              .link:hover {
-                  background-color: var(--tertiary-color);
-              }
-          
-
-              .label_burger {
-                  display: none;
-              }
-
-              .menu_burger {
-                  display: none;
-              }
-
-              
-              /*-------------Top button---------*/
-              
-              .img-top-button {
-                width: 55px;
-                padding: 10px;
-                transition: all .4s;
-              }
-
-            /*-------------Index sections---------*/
-
-            .container_index {
-              display: grid;
-              grid-template-columns: 1fr;
-              padding: 0 10vw;
-              align-self: center;
-            }
-
-            .title1_index {
-              display: flex;
-              font-size: 3.5rem;
-              justify-content: center;
-              color: var(--primary-color);
-              font-weight: 600;
-              padding: 10px;
-            }
-
-            .description_container {
-              justify-items: center;
-              background-color: var(--primary-color);
-              padding: 10px;
-              margin: 20px;
-              border-radius: 10px;
-            }
-
-            .title2_index {
-              font-size: 2rem;
-              color: var(--secondary-color);
-              font-weight: 550;
-              line-height: 30px;
-              padding: 15px;
-            }
-
-            .text_description {
-              color: var(--secondary-color);
-              font-size: 1rem;
-              line-height: 28px;
-              font-weight: 200;
-              line-height: 2rem;
-              padding: 15px;
-            }
-
-            .artist_container {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              background-color: var(--primary-color);
-            }
-
-            .left_column_artist {
-              height: 100%;
-              object-fit: fill;
-            }
-
-            .title3_index {
-              font-size: 1.7rem;
-              font-weight: 600;
-              color: var(--secondary-color);
-              padding: 10px;
-            }
-
-            .text_artist {
-              color: var(--secondary-color);
-              font-size: 1rem;
-              font-weight: 200;
-              line-height: 2rem;
-              padding: 15px;
-              max-height: 100%;
-            }
-
-            .right_column_artist {
-              height: 100%;
-            }
-
-            .videos_index_brk1 {
-              width: 100%;
-              height: 100%;
-              object-fit: fill;
-              padding: 15px;
-            }
-
-            .videos_index {
-              display: none;
-            }
-
-            .artist_container_3fr {
-              display: none;
-            }
-
-            .container_index_brk2 {
-              display: none;
-            }
-
+    /* ============================================
+       HEADER - Tablet Size
+       ============================================
+       height increases from 90px to 120px to
+       accommodate horizontal navigation.
+       
+       transition: all .4s creates smooth animations
+       when resizing the browser window.
+       
+       This provides better UX during device rotation
+       or window resizing.
+    ============================================ */
+    
+    .header {
+        height: 120px;                          /* Taller header for horizontal nav */
+        background-color: var(--primary-color); /* Maintain dark background */
+        transition: all 0.4s;                   /* Smooth resize transitions */
     }
 
-          
-/*---------------------*/
-/*Écrans minimum 1025px*/
-/*---------------------*/
-    @media only screen and (min-width: 1025px) {
 
-              /*------------Header section------------*/
-              .header {
-                height: 150px;
-                background-color: var(--primary-color);
-                transition: all .4s;
-              }
-
-              .ul_links {
-                position: static;
-                width: auto;
-                height: auto;
-                flex-direction: row;
-                gap: .1rem;
-                margin: 0 10px;
-                background-color: var(--primary-color);
-              }
-          
-              .link {
-                  font-size: 1rem;
-                  transition: all .4s;
-                  padding: .2rem .5rem;
-              }
-          
-              .link:hover {
-                  background-color: var(--tertiary-color);
-              }
-          
-
-              .label_burger {
-                  display: none;
-              }
-
-              .menu_burger {
-                  display: none;
-              }
-
-
-              /*-------------Top button---------*/
-
-              .img-top-button {
-                width: 60px;
-                padding: 10px;
-                transition: all .4s;
-              }
-
-
-            /*-------------Index sections---------*/
-
-            .container_index {
-              display: none;
-            }
-            
-            .container_index_brk2 {
-              display: grid;
-              grid-template-columns: 1fr;
-              padding: 0 5vw;
-              align-self: center;
-            }
-
-            .title1_index {
-              display: flex;
-              font-size: 2.5rem;
-              justify-content: center;
-              color: var(--primary-color);
-              font-weight: 600;
-              padding: 10px;
-            }
-
-            .description_container {
-              justify-items: center;
-              background-color: var(--primary-color);
-              padding: 10px;
-              margin: 20px;
-              border-radius: 10px;
-            }
-
-            .title2_index {
-              font-size: 1.5rem;
-              color: var(--secondary-color);
-              font-weight: 550;
-              line-height: 30px;
-              padding: 5px;
-            }
-
-            .text_description {
-              color: var(--secondary-color);
-              font-size: 1rem;
-              line-height: 1.7rem;
-              font-weight: 200;
-              line-height: 2rem;
-              padding: 15px;
-            }
-
-            .artist_container_3fr {
-              display: grid;
-              grid-template-columns: repeat(3, 1fr);
-            }
-
-            .artist_container {
-              display: grid;
-              grid-template-columns: 1fr;
-              background-color: var(--primary-color);
-            }
-
-            .left_column_artist {
-              height: 100%;
-              object-fit: fill;
-            }
-
-            .title3_index {
-              font-size: 1.3rem;
-              font-weight: 600;
-              color: var(--secondary-color);
-              padding: 10px;
-            }
-
-            .text_artist {
-              color: var(--secondary-color);
-              font-size: 1rem;
-              font-weight: normal;
-              line-height: 1.5rem;
-              padding: 15px;
-              max-height: 100%;
-            }
-
-            .right_column_artist {
-              height: 100%;
-            }
-
-            .videos_index_brk1 {
-              width: 100%;
-              height: 100%;
-              object-fit: fill;
-              padding: 15px;
-            }
-
-            .videos_index {
-              display: none;
-            }
-
-
-            /*-------------Footer section---------*/
-
-            .nav_footer_brk2 {
-              display: grid;
-              grid-template-columns: 1fr 1fr 1fr;
-              justify-items: center;
-              padding: 2rem 0;
-            }
-
-            .nav_footer {
-              display: none;
-            }
-
-            .section_footer {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              width: 30vw;
-              padding: 10px;
-              justify-content: center;
-              transition: all .4s;
-            } 
+    /* ============================================
+       NAVIGATION - Horizontal Layout
+       ============================================
+       On tablet, we switch from vertical (mobile)
+       to horizontal navigation.
+       
+       position: static removes absolute positioning
+       from mobile layout, making nav part of normal
+       document flow.
+       
+       flex-direction: row displays items horizontally
+       instead of vertically (mobile default).
+       
+       width: auto and height: auto let the nav size
+       naturally based on content, rather than fixed
+       dimensions used for mobile menu.
+    ============================================ */
+    
+    .ul_links {
+        position: static;                       /* Normal document flow (not absolute) */
+        width: auto;                            /* Width based on content */
+        height: auto;                           /* Height based on content */
+        flex-direction: row;                    /* Horizontal layout */
+        gap: 0.1rem;                            /* Small space between items */
+        background-color: var(--primary-color); /* Match header background */
     }
+
+
+    /* ============================================
+       NAVIGATION LINKS - Tablet Sizing
+       ============================================
+       Links are smaller on tablet than mobile to fit
+       horizontally in the available space.
+       
+       padding: .2rem .4rem creates compact but still
+       clickable areas (vertical: 0.2rem, horizontal: 0.4rem).
+       
+       Reduced from mobile's 1.5em padding for better
+       horizontal fit.
+    ============================================ */
+    
+    .link {
+        font-size: 1rem;                        /* Base font size */
+        transition: all 0.4s;                   /* Smooth hover transitions */
+        padding: 0.2rem 0.4rem;                 /* Compact padding for horizontal layout */
+    }
+
+    .link:hover {
+        background-color: var(--tertiary-color); /* Burgundy red on hover */
+    }
+
+
+    /* ============================================
+       HAMBURGER MENU - Hide on Tablet
+       ============================================
+       Both the label (hamburger icon) and checkbox
+       are hidden on tablet since we show full
+       horizontal navigation.
+       
+       display: none completely removes elements
+       from the layout.
+    ============================================ */
+    
+    .label_burger {
+        display: none;                          /* Hide hamburger icon */
+    }
+
+    .menu_burger {
+        display: none;                          /* Hide menu checkbox */
+    }
+
+
+    /* ============================================
+       SCROLL-TO-TOP BUTTON - Tablet Size
+       ============================================
+       Slightly larger button for tablet screens.
+       
+       transition ensures smooth size changes when
+       switching between breakpoints.
+    ============================================ */
+    
+    .img-top-button {
+        width: 55px;                            /* Slightly larger than mobile (50px) */
+        padding: 10px;                          /* Maintain padding */
+        transition: all 0.4s;                   /* Smooth transitions */
+    }
+
+
+    /* ============================================
+       PAGE LAYOUT - Tablet Adjustments
+       ============================================
+       Container becomes visible and uses grid layout.
+       
+       padding: 0 10vw adds 10% viewport width padding
+       on left and right, creating margins that scale
+       with screen size.
+       
+       This prevents content from touching screen edges
+       on larger tablets.
+    ============================================ */
+    
+    .container_index {
+        display: grid;                          /* Enable grid layout */
+        grid-template-columns: 1fr;             /* Single column */
+        padding: 0 10vw;                        /* 10% horizontal padding (scales with viewport) */
+        align-self: center;                     /* Center in parent container */
+    }
+
+
+    /* ============================================
+       TYPOGRAPHY - Tablet Scaling
+       ============================================
+       Text sizes increase on tablet for better
+       readability on larger screens.
+       
+       title1_index: 3.5rem (vs 2.5rem on mobile)
+       title2_index: 2rem (vs 1.2rem on mobile)
+       
+       This creates a better visual hierarchy and
+       improves readability at arm's length distance
+       (typical for tablets).
+    ============================================ */
+    
+    .title1_index {
+        display: flex;                          /* Flexbox for centering */
+        font-size: 3.5rem;                      /* Larger heading for tablet */
+        justify-content: center;                /* Center horizontally */
+        color: var(--primary-color);            /* Dark gray */
+        font-weight: 600;                       /* Semi-bold */
+        padding: 10px;                          /* Spacing */
+    }
+
+    .description_container {
+        justify-items: center;                  /* Center grid items */
+        background-color: var(--primary-color); /* Dark background */
+        padding: 10px;                          /* Internal spacing */
+        margin: 20px;                           /* External spacing */
+        border-radius: 10px;                    /* Rounded corners */
+    }
+
+    .title2_index {
+        font-size: 2rem;                        /* Larger subheading */
+        color: var(--secondary-color);          /* White text */
+        font-weight: 550;                       /* Medium-semi-bold */
+        line-height: 30px;                      /* Line spacing */
+        padding: 15px;                          /* Increased padding */
+    }
+
+    .text_description {
+        color: var(--secondary-color);          /* White text */
+        font-size: 1rem;                        /* Base size */
+        line-height: 28px;                      /* First line-height */
+        font-weight: 200;                       /* Light weight */
+        padding: 15px;                          /* Increased padding */
+    }
+
+
+    /* ============================================
+       ARTIST CONTAINERS - Two-Column Grid
+       ============================================
+       On tablet, we switch from 1 column (mobile)
+       to 2 columns for artist sections.
+       
+       grid-template-columns: 1fr 1fr creates two
+       equal-width columns.
+       
+       This better utilizes the wider tablet screen
+       and shows more content above the fold.
+       
+       Why 2 columns?
+       - Tablets have enough width for side-by-side
+       - Maintains readability (not too wide)
+       - Better than single column (too narrow)
+       - Better than 3 columns (text too cramped)
+    ============================================ */
+    
+    .artist_container {
+        display: grid;                          /* Enable grid layout */
+        grid-template-columns: 1fr 1fr;         /* Two equal columns */
+        background-color: var(--primary-color); /* Dark background */
+    }
+
+    .left_column_artist {
+        height: 100%;                           /* Full height */
+        object-fit: fill;                       /* Fill container */
+    }
+
+    .title3_index {
+        font-size: 1.7rem;                      /* Larger artist names */
+        font-weight: 600;                       /* Semi-bold */
+        color: var(--secondary-color);          /* White text */
+        padding: 10px;                          /* Spacing */
+    }
+
+    .text_artist {
+        color: var(--secondary-color);          /* White text */
+        font-size: 1rem;                        /* Base size */
+        font-weight: 200;                       /* Light weight */
+        line-height: 2rem;                      /* Generous line spacing */
+        padding: 15px;                          /* Increased padding */
+        max-height: 100%;                       /* Limit height */
+    }
+
+    .right_column_artist {
+        height: 100%;                           /* Full height */
+    }
+
+
+    /* ============================================
+       VIDEO EMBEDS - Tablet Sizing
+       ============================================
+       Videos expand to full available space.
+       
+       height: 100% (vs 300px on mobile) allows
+       videos to scale naturally with container.
+       
+       This provides better viewing experience on
+       larger tablet screens.
+    ============================================ */
+    
+    .videos_index_brk1 {
+        width: 100%;                            /* Full width */
+        height: 100%;                           /* Full height (vs fixed 300px on mobile) */
+        object-fit: fill;                       /* Fill container */
+        padding: 15px;                          /* Increased padding */
+    }
+
+    .videos_index {
+        display: none;                          /* Desktop version hidden */
+    }
+
+
+    /* ============================================
+       DESKTOP LAYOUTS - Hidden on Tablet
+       ============================================
+       These containers are specifically for desktop
+       (1025px+) and remain hidden on tablet.
+       
+       - artist_container_3fr: 3-column grid
+       - container_index_brk2: Desktop-specific container
+    ============================================ */
+    
+    .artist_container_3fr {
+        display: none;                          /* 3-column layout (desktop only) */
+    }
+
+    .container_index_brk2 {
+        display: none;                          /* Desktop container (desktop only) */
+    }
+
+}
+          
+/* ============================================
+   DESKTOP BREAKPOINT: ≥ 1025px
+   ============================================
+   This media query targets desktop computers,
+   large laptops, and wide screens.
+   
+   At this breakpoint, we implement:
+   - Tallest header (150px) for prominent branding
+   - Three-column grid for artist sections
+   - Desktop-specific containers
+   - Three-column footer layout
+   - Optimized spacing for wide screens
+   
+   min-width: 1025px means styles apply at 1025px
+   and all larger screens (no max-width).
+   
+   Why 1025px?
+   - Most tablets are ≤1024px wide
+   - Laptops typically start at 1280px+
+   - Provides clear tablet/desktop boundary
+   - Common industry-standard breakpoint
+============================================ */
+
+@media only screen and (min-width: 1025px) {
+
+
+    /* ============================================
+       HEADER - Desktop Size
+       ============================================
+       Header grows to 150px (vs 120px tablet, 90px mobile).
+       
+       Progression: 90px → 120px → 150px
+       
+       Taller headers on desktop:
+       - Provide stronger brand presence
+       - Accommodate larger logos
+       - Create better visual hierarchy
+       - Utilize available vertical space
+       
+       transition: all .4s ensures smooth animations
+       during browser window resizing.
+    ============================================ */
+    
+    .header {
+        height: 150px;                          /* Tallest header for desktop */
+        background-color: var(--primary-color); /* Dark background */
+        transition: all 0.4s;                   /* Smooth transitions */
+    }
+
+
+    /* ============================================
+       NAVIGATION - Desktop Layout
+       ============================================
+       Desktop navigation is similar to tablet
+       (horizontal layout) but with increased spacing.
+       
+       margin: 0 10px adds horizontal margins to
+       separate nav from edges, improving visual
+       breathing room on wide screens.
+       
+       Remains horizontally oriented with flexbox
+       for consistent cross-browser behavior.
+    ============================================ */
+    
+    .ul_links {
+        position: static;                       /* Normal document flow */
+        width: auto;                            /* Content-based width */
+        height: auto;                           /* Content-based height */
+        flex-direction: row;                    /* Horizontal layout */
+        gap: 0.1rem;                            /* Minimal spacing between items */
+        margin: 0 10px;                         /* Horizontal margins for breathing room */
+        background-color: var(--primary-color); /* Match header background */
+    }
+
+
+    /* ============================================
+       NAVIGATION LINKS - Desktop Spacing
+       ============================================
+       padding increases from .2rem .4rem (tablet)
+       to .2rem .5rem (desktop).
+       
+       The extra horizontal padding (.5rem vs .4rem)
+       makes links more comfortable to click with
+       mouse on desktop, accounting for precise
+       pointer control vs touch on mobile/tablet.
+    ============================================ */
+    
+    .link {
+        font-size: 1rem;                        /* Base font size */
+        transition: all 0.4s;                   /* Smooth hover transitions */
+        padding: 0.2rem 0.5rem;                 /* Slightly more horizontal padding */
+    }
+
+    .link:hover {
+        background-color: var(--tertiary-color); /* Burgundy red on hover */
+    }
+
+
+    /* ============================================
+       HAMBURGER MENU - Hidden on Desktop
+       ============================================
+       Both hamburger icon and checkbox remain hidden
+       on desktop, just like tablet.
+       
+       Desktop always shows full horizontal navigation.
+    ============================================ */
+    
+    .label_burger {
+        display: none;                          /* Hide hamburger icon */
+    }
+
+    .menu_burger {
+        display: none;                          /* Hide menu checkbox */
+    }
+
+
+    /* ============================================
+       SCROLL-TO-TOP BUTTON - Desktop Size
+       ============================================
+       Largest button size for desktop (60px).
+       
+       Size progression: 50px → 55px → 60px
+       
+       Larger button on desktop is easier to see
+       and click with mouse on large screens.
+    ============================================ */
+    
+    .img-top-button {
+        width: 60px;                            /* Largest size for desktop */
+        padding: 10px;                          /* Consistent padding */
+        transition: all 0.4s;                   /* Smooth transitions */
+    }
+
+
+    /* ============================================
+       CONTAINER SWITCHING - Desktop Layout
+       ============================================
+       On desktop, we completely switch containers:
+       
+       .container_index (mobile/tablet) → HIDDEN
+       .container_index_brk2 (desktop) → SHOWN
+       
+       This allows fundamentally different layouts
+       for desktop vs mobile without complex CSS
+       overrides or specificity battles.
+       
+       Why two containers?
+       - Cleaner code (no need to override all properties)
+       - Different HTML structure if needed
+       - Easier to maintain separate layouts
+       - Better performance (less CSS to process)
+    ============================================ */
+    
+    .container_index {
+        display: none;                          /* Hide mobile/tablet container */
+    }
+    
+    .container_index_brk2 {
+        display: grid;                          /* Show desktop container */
+        grid-template-columns: 1fr;             /* Single column layout */
+        padding: 0 5vw;                         /* 5% viewport width padding (less than tablet's 10vw) */
+        align-self: center;                     /* Center alignment */
+    }
+
+
+    /* ============================================
+       TYPOGRAPHY - Desktop Scaling
+       ============================================
+       Desktop uses more conservative text sizing
+       than tablet to maximize screen real estate.
+       
+       title1_index: 2.5rem (same as mobile!)
+       - Smaller than tablet's 3.5rem
+       - Desktop users sit farther from screen
+       - More content visible above fold
+       
+       title2_index: 1.5rem (smaller than tablet's 2rem)
+       - Balanced hierarchy
+       - Efficient use of space
+    ============================================ */
+    
+    .title1_index {
+        display: flex;                          /* Flexbox for centering */
+        font-size: 2.5rem;                      /* Same as mobile (smaller than tablet) */
+        justify-content: center;                /* Center horizontally */
+        color: var(--primary-color);            /* Dark gray */
+        font-weight: 600;                       /* Semi-bold */
+        padding: 10px;                          /* Standard padding */
+    }
+
+    .description_container {
+        justify-items: center;                  /* Center grid items */
+        background-color: var(--primary-color); /* Dark background */
+        padding: 10px;                          /* Internal spacing */
+        margin: 20px;                           /* External spacing */
+        border-radius: 10px;                    /* Rounded corners */
+    }
+
+    .title2_index {
+        font-size: 1.5rem;                      /* Medium subheading */
+        color: var(--secondary-color);          /* White text */
+        font-weight: 550;                       /* Medium-semi-bold */
+        line-height: 30px;                      /* Line spacing */
+        padding: 5px;                           /* Minimal padding */
+    }
+
+    .text_description {
+        color: var(--secondary-color);          /* White text */
+        font-size: 1rem;                        /* Base size */
+        line-height: 1.7rem;                    /* First line-height */
+        font-weight: 200;                       /* Light weight */
+        padding: 15px;                          /* Standard padding */
+    }
+
+
+    /* ============================================
+       THREE-COLUMN GRID - Desktop Layout
+       ============================================
+       The key desktop layout feature: 3-column grid
+       for artist sections.
+       
+       repeat(3, 1fr) creates 3 equal-width columns.
+       This is shorthand for: 1fr 1fr 1fr
+       
+       Layout progression:
+       - Mobile: 1 column (stacked)
+       - Tablet: 2 columns (side-by-side)
+       - Desktop: 3 columns (full showcase)
+       
+       Why 3 columns?
+       - Perfect for showcasing 3 drummers
+       - Utilizes wide desktop screens efficiently
+       - Balanced layout (not too cramped)
+       - Industry standard for card-based layouts
+       
+       Each .artist_container inside becomes one column.
+    ============================================ */
+    
+    .artist_container_3fr {
+        display: grid;                          /* Enable grid layout */
+        grid-template-columns: repeat(3, 1fr);  /* 3 equal columns */
+    }
+
+    .artist_container {
+        display: grid;                          /* Nested grid for each artist */
+        grid-template-columns: 1fr;             /* Single column within each card */
+        background-color: var(--primary-color); /* Dark background */
+    }
+
+    .left_column_artist {
+        height: 100%;                           /* Full height */
+        object-fit: fill;                       /* Fill container */
+    }
+
+    .title3_index {
+        font-size: 1.3rem;                      /* Artist name size */
+        font-weight: 600;                       /* Semi-bold */
+        color: var(--secondary-color);          /* White text */
+        padding: 10px;                          /* Standard padding */
+    }
+
+    .text_artist {
+        color: var(--secondary-color);          /* White text */
+        font-size: 1rem;                        /* Base size */
+        font-weight: normal;                    /* Normal weight (400) */
+        line-height: 1.5rem;                    /* Tighter line spacing for columns */
+        padding: 15px;                          /* Standard padding */
+        max-height: 100%;                       /* Limit height */
+    }
+
+    .right_column_artist {
+        height: 100%;                           /* Full height */
+    }
+
+
+    /* ============================================
+       VIDEO EMBEDS - Desktop Sizing
+       ============================================
+       Videos remain at 100% width and height to
+       fill their grid cell naturally.
+       
+       object-fit: fill ensures videos fill the
+       available space (though 'contain' or 'cover'
+       might preserve aspect ratio better).
+    ============================================ */
+    
+    .videos_index_brk1 {
+        width: 100%;                            /* Full width of grid cell */
+        height: 100%;                           /* Full height of grid cell */
+        object-fit: fill;                       /* Fill container */
+        padding: 15px;                          /* Standard padding */
+    }
+
+    .videos_index {
+        display: none;                          /* Alternative video layout (not used) */
+    }
+
+
+    /* ============================================
+       FOOTER - Desktop Three-Column Layout
+       ============================================
+       Desktop footer switches to 3-column grid,
+       perfectly matching the 3-drummer layout above.
+       
+       Container switching:
+       .nav_footer (mobile/tablet) → HIDDEN
+       .nav_footer_brk2 (desktop) → SHOWN
+       
+       grid-template-columns: 1fr 1fr 1fr
+       creates three equal columns, one for each
+       drummer's footer section.
+       
+       justify-items: center centers content within
+       each column.
+    ============================================ */
+    
+    .nav_footer_brk2 {
+        display: grid;                          /* Show desktop footer layout */
+        grid-template-columns: 1fr 1fr 1fr;     /* 3 equal columns */
+        justify-items: center;                  /* Center items in each column */
+        padding: 2rem 0;                        /* Vertical padding */
+    }
+
+    .nav_footer {
+        display: none;                          /* Hide mobile/tablet footer */
+    }
+
+
+    /* ============================================
+       FOOTER SECTIONS - Desktop Sizing
+       ============================================
+       width changes from 60vw (tablet) to 30vw (desktop).
+       
+       Why narrower?
+       - 3 columns × 30vw = 90vw total width
+       - Leaves 10vw (5vw on each side) for margins
+       - Each footer section is more compact
+       - Better proportions for 3-column layout
+       
+       Each section contains portrait + links in
+       a 2-column grid (unchanged from tablet).
+    ============================================ */
+    
+    .section_footer {
+        display: grid;                          /* Grid for portrait + links */
+        grid-template-columns: 1fr 1fr;         /* 2 columns: image and links */
+        width: 30vw;                            /* Narrower for 3-column layout */
+        padding: 10px;                          /* Standard padding */
+        justify-content: center;                /* Center grid content */
+        transition: all 0.4s;                   /* Smooth transitions */
+    }
+
+}
+
+
+/* ============================================
+   END OF STYLESHEET
+   ============================================
+   
+   SUMMARY OF RESPONSIVE STRATEGY:
+   
+   Mobile (< 426px):
+   - Vertical navigation (hamburger menu)
+   - 1-column layouts
+   - Smaller text
+   - Compact spacing
+   
+   Tablet (426px - 1024px):
+   - Horizontal navigation
+   - 2-column artist grid
+   - Larger text
+   - Increased spacing
+   
+   Desktop (≥ 1025px):
+   - Horizontal navigation with margins
+   - 3-column artist grid
+   - 3-column footer
+   - Optimized typography
+   - Maximum utilization of wide screens
+   
+   This mobile-first, progressive enhancement
+   approach ensures:
+   ✓ Fast mobile performance
+   ✓ Smooth responsive behavior
+   ✓ Optimal layouts for each device
+   ✓ Maintainable, organized code
+============================================ */
